@@ -1,3 +1,4 @@
+
 .owl-carousel .item{
  /* border: 1px solid black; */
  font-size: 24px;
@@ -66,10 +67,13 @@
     background-image:-o-linear-gradient(rgba(10, 77, 123, 0.1), #fff);
 }
 
-.goodnessseccont img{
+/* .goodnessseccont img{
     width:100%;
+} */
+.goodnessseccont img {
+    height: 200px; /* Adjust the height as needed */
+    width: auto;
 }
-
 .mlkpro{
     color:#636362;
     font-size:22px;
@@ -84,3 +88,4 @@
 .goodnesssec a{
     text-decoration: none;
 }
+ 
