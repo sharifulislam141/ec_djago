@@ -1,0 +1,33 @@
+{% extends "app/base.html" %}
+
+{% load static %}
+
+{% block title %}
+Home Page
+{% endblock title %}
+
+{% block main-content %}
+
+
+<div class="container">
+ 
+    <div class="row">
+    {% for product in products  %}
+      <div class="col-md-4">
+        <a href= "{% url 'app:product-detail' product.id %}" class = "btn">
+          <div class="card">
+            <img src="{{product.product_image.url}}" class="card-img-top" alt="Product Image">
+            <div class="card-body">
+              <h5 class="card-title">{{product.title}}</h5>
+              <p class="card-text">Original Price: ${{product.selling_price}}</p>
+              <p class="card-text">Discount Price: ${{product.discount_price}}</p>
+              <p><a href="#" class="btn btn-primary">Add to Cart</a></p>
+            </div>
+        </a>
+        </div>
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+
+{% endblock main-content %}

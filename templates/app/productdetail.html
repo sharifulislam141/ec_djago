@@ -1,0 +1,43 @@
+{% extends "app/base.html" %}
+
+{% load static %}
+
+{% block title %}
+Product Details
+{% endblock title %}
+
+{% block main-content %}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header bg-secondary text-white text-center ">
+                    Product Details 
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.title }}</h5>
+                    <img src="{{ product.product_image.url }}" class="card-img-top" alt="Product Image">
+                    <p class="card-text">{{ product.description }}</p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item text-black-50 ">
+                            Original Price: <del>{{ product.selling_price }}</del> $
+                        </li>
+                        <li class="list-group-item  ">
+                            Discount Price: {{ product.discount_price }} $
+                        </li>
+                        {% comment %} <li class="list-group-item">Category: {{ product.category }}</li> {% endcomment %}
+                        <!-- Add more details as needed -->
+                    </ul>
+                    <a href="#" class="btn btn-danger mt-3">Add to Cart</a>
+                    <a href="#" class="btn btn-dark mt-3">Buy Now</a>
+                    <br>
+                    <br>
+                    <!-- You can add more buttons or actions here -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock main-content %}

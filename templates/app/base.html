@@ -44,18 +44,24 @@
               <a class="nav-link active" aria-current="page" href="/">Home</a>
             </li>
  
-            <li class="nav-item dropdown">
-              <a class="nav-link  text-white dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Products
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Food_1</a></li>
-                <li><a class="dropdown-item" href="#">Food_2</a></li>
-                <li><a class="dropdown-item" href="#">Food_3</a></li>
-                <li><a class="dropdown-item" href="#">Food_4</a></li>
-                <li><a class="dropdown-item" href="#">Food_5</a></li> 
-              </ul>
-            </li>
+
+            <div class="dropdown">
+              <button class="btn btn-btn-success text-white dropdown-toggle" type="button" id="productDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Product
+              </button>
+              <div class="dropdown-menu" aria-labelledby="productDropdown">
+                <a class="dropdown-item" href="{% url 'app:Category'  'ML' %}">Milk</a>
+                <a class="dropdown-item" href="{% url 'app:Category'  'CR' %}">Curd</a>
+                <a class="dropdown-item" href="{% url 'app:Category'  'MS' %}">MilkShake</a>
+                <a class="dropdown-item" href="{% url 'app:Category'  'LS' %}">Lassi</a>
+                <a class="dropdown-item" href="{% url 'app:Category'  'GH' %}">Ghee</a>
+                <a class="dropdown-item" href="{% url 'app:Category'  'PN' %}">Paneer</a>
+                <a class="dropdown-item" href="{% url 'app:Category'  'CZ' %}">Cheese</a>
+                <a class="dropdown-item" href="{% url 'app:Category'  'IC' %}">Ice-Creams</a>
+              </div>
+            </div>
+
+
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="/">About Us</a>
             </li>
@@ -107,14 +113,15 @@
 
 
     {% comment %} footer start  {% endcomment %}
-    <footer class="bg-body-tertiary fixed-bottom text-center bg-success text-lg-start" style="padding: 0; margin: 0;">
+    <footer class="bg-body-tertiary fixed-bottom text-center bg-success text-lg-start d-none d-sm-block">
       <!-- Copyright -->
-      <div class="text-center p-1" style="background-color: rgba(0, 0, 0, 0.05); margin: 0;">
-        © 2024 Copyright:
-        <a class="text-body"  href="https://www.facebook.com/tanvirmahamud.shariful.3/" target="_blank" >Tanvir Mahamud Shariful</a>
+      <div class="text-center p-1" style="background-color: rgba(0, 0, 0, 0.05);">
+          © 2024 Copyright:
+          <a class="text-body"  href="https://www.facebook.com/tanvirmahamud.shariful.3/" target="_blank">Tanvir Mahamud Shariful</a>
       </div>
       <!-- Copyright -->
-    </footer>
+  </footer>
+  
     
 
     {% comment %} footer end  {% endcomment %}
