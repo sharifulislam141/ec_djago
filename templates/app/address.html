@@ -1,0 +1,64 @@
+{% extends "app/base.html" %}
+{% load static %}
+{% block title %} Address{% endblock title %}
+{% block main-content %}
+
+<div class="col-sm-2 border-end">
+  <ul class="list-unstyled">
+    <li class="d-grid">
+      <a
+        class="btn {% if active_tab == 'profile' %}btn-primary{% endif %}"
+        href="{% url 'app:profile' %}"
+        >Profile</a
+      >
+    </li>
+    <li class="d-grid">
+      <a
+        class="btn {% if active_tab == 'address' %}btn-primary{% endif %}"
+        href="{% url 'app:address' %}"
+        >Address</a
+      >
+    </li>
+  </ul>
+</div>
+<div class="container mt-5">
+  <h2 class="text-center">User Profile</h2>
+  <div class="row justify-content-md-center">
+    <div class="col-md-8">
+      <div class="row justify-content-md-center">
+        <div class="col-md-8">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Profile Details</h5>
+              <ul class="list-group list-group-flush">
+                {% if add %}
+                <li class="list-group-item">
+                  <strong>Name:</strong> {{ add.name }}
+                </li>
+                <li class="list-group-item">
+                  <strong>Locality:</strong> {{ add.locality }}
+                </li>
+                <li class="list-group-item">
+                  <strong>City:</strong> {{ add.city }}
+                </li>
+                <li class="list-group-item">
+                  <strong>Mobile:</strong> {{ add.mobile }}
+                </li>
+                <li class="list-group-item">
+                  <strong>State:</strong> {{ add.state }}
+                </li>
+                <li class="list-group-item">
+                  <strong>Zipcode:</strong> {{ add.zipcode }}
+                </li>
+                {% else %}
+                <li class="list-group-item">No profile found</li>
+                {% endif %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock main-content %}

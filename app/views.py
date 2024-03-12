@@ -1,7 +1,7 @@
 from django.shortcuts import render 
 from django.views import View
-from .models import Product
-from  .forms import CustomerRegistrationForm
+from .models import Product, Customer
+from  .forms import CustomerRegistrationForm, CustomerProfileForm
 from django.contrib import messages
 # Create your views here.
 def index(request):
@@ -48,3 +48,23 @@ class CustomerRegistrationView(View):
    
             messages.warning(request,"Invalid Input Data")
         return render(request,'app/customerregistration.html',locals())
+class ProfileView(View):
+    def get(self, request):
+        form = CustomerProfileForm()
+        active_tab = 'profile'
+        return render(request, 'app/profile.html', {'form': form, 'active_tab': active_tab})
+
+    def post(self, request):
+        form = CustomerProfileForm(request.POST)
+        active_tab = 'profile'
+        if form.is_valid():
+            # Your form processing logic
+            messages.success(request, "Profile saved successfully")
+        else:
+            messages.warning(request, "Invalid input")
+        return render(request, 'app/profile.html', {'form': form, 'active_tab': active_tab})
+def Address(request):
+    add = Customer.objects.filter(user=request.user).first()
+    print(add)  # Add this line to check the content of add
+    active_tab = 'address'
+    return render(request, 'app/address.html', {'add': add, 'active_tab': active_tab})

@@ -1,0 +1,88 @@
+{% extends "app/base.html" %}
+{% load static %}
+{% block title %} My Profile{% endblock title %}
+{% block extra_css %}
+<style>
+    /* Profile Section Styles */
+    .profile-section {
+        background-color: #f8f9fa;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-section h2 {
+        color: #343a40;
+        font-size: 28px;
+    }
+
+    .profile-section h4 {
+        margin-top: 20px;
+        margin-bottom: 10px;
+        color: #007bff;
+        font-size: 20px;
+    }
+
+    .profile-section p {
+        color: #6c757d;
+        font-size: 16px;
+    }
+
+    .profile-section hr {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    .profile-section img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 5px solid #007bff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+</style>
+{% endblock extra_css %}
+{% block main-content %}
+<!-- Profile Section -->
+
+<div class="col-sm-2 border-end">
+    <ul class="list-unstyled">
+        <li class="d-grid"><a class="btn {% if active_tab == 'profile' %}btn-primary{% endif %}" href="{% url 'app:profile' %}">Profile</a></li>
+        <li class="d-grid"><a class="btn {% if active_tab == 'address' %}btn-primary{% endif %}" href="{% url 'app:address' %}">Address</a></li>
+    </ul>
+</div>
+<!-- profile.html -->
+{% if messages %}
+    <div class="alert alert-success" role="alert">
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    </div>
+{% endif %}
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-md-8">
+            <form action="" method="post">
+                {% csrf_token %}
+                {% for fm in form %}
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label">{{ fm.label_tag }}</label>
+                    <div class="col-md-9">
+                        {{ fm }}
+                        <small class="text-danger">{{ fm.errors|striptags }}</small>
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="form-group row">
+                    <div class="col-md-9 offset-md-3">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock main-content %}
