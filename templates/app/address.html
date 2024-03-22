@@ -1,6 +1,6 @@
-{% extends "app/base.html" %}
-{% load static %}
-{% block title %} Address{% endblock title %}
+{% extends "app/base.html" %} 
+{% load static %} 
+{% block title %} Address{%endblock title %} 
 {% block main-content %}
 
 <div class="col-sm-2 border-end">
@@ -26,37 +26,43 @@
   <div class="row justify-content-md-center">
     <div class="col-md-8">
       <div class="row justify-content-md-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
+          {% for ad in add %}
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Profile Details</h5>
+              <h5 class="card-title">Profile Details : {{forloop.counter}}</h5>
               <ul class="list-group list-group-flush">
                 {% if add %}
                 <li class="list-group-item">
-                  <strong>Name:</strong> {{ add.name }}
+                  <strong>Name:</strong> {{ ad.name }}
                 </li>
                 <li class="list-group-item">
-                  <strong>Locality:</strong> {{ add.locality }}
+                  <strong>Locality:</strong> {{ ad.locality }}
                 </li>
                 <li class="list-group-item">
-                  <strong>City:</strong> {{ add.city }}
+                  <strong>City:</strong> {{ ad.city }}
                 </li>
                 <li class="list-group-item">
-                  <strong>Mobile:</strong> {{ add.mobile }}
+                  <strong>Mobile:</strong> {{ ad.mobile }}
                 </li>
                 <li class="list-group-item">
-                  <strong>State:</strong> {{ add.state }}
+                  <strong>State:</strong> {{ ad.state }}
                 </li>
                 <li class="list-group-item">
-                  <strong>Zipcode:</strong> {{ add.zipcode }}
+                  <strong>Zipcode:</strong> {{ ad.zipcode }}
                 </li>
+                <a type="button" class="btn btn-success" href="{% url 'app:UpdateAddress' ad.id %}">Update</a>
+
                 {% else %}
                 <li class="list-group-item">No profile found</li>
                 {% endif %}
               </ul>
             </div>
           </div>
+          {% endfor %}
         </div>
+        
+        
       </div>
     </div>
   </div>

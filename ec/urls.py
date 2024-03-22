@@ -20,5 +20,6 @@ from app import urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include("app.urls"))
+    path('', include("app.urls")),
+    path('otp/', include('otp_verification.urls')),
 ]

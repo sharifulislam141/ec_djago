@@ -1,0 +1,27 @@
+{% extends "app/base.html" %}
+{% block title %}Update Address{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+    <div class="row">
+        <h3>Welcome {{ request.user }}</h3>
+    </div>
+    <div class="col-sm-8 offset-sm-2">
+        <form action="" method="post">
+            {% csrf_token %}
+            {% for fm in form %}
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label">{{ fm.label_tag }}</label>
+                <div class="col-md-9">
+                    {{ fm }}
+                    <small class="text-danger">{{ fm.errors|striptags }}</small>
+                </div>
+            </div>
+            {% endfor %}
+            <div class="col-12 mt-5 text-center">
+                <button type="submit" class="btn btn-primary">Update</button>
+                <a href="{% url 'app:address' %}" class="btn btn-danger">Back</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock main-content %}

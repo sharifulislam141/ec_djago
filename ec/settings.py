@@ -30,7 +30,6 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -38,8 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app'
+    'app',  # <-- Note the comma at the end
+    'otp_verification',  # <-- Added the otp_verification app here
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -101,7 +102,25 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# email sending 
 
+# settings.py
+
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.mailtrap.io'
+# EMAIL_PORT = 2525
+# EMAIL_HOST_USER = '4584569de40a55'
+# EMAIL_HOST_PASSWORD = 'd3a0a4ad8a3f68'
+# EMAIL_USE_TLS = False
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# DEFAULT_FROM_EMAIL = 'your_email@example.com'
+
+ 
+
+# Password reset settings
+EMAIL_SUBJECT_PREFIX = 'app'
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -112,6 +131,8 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+LOGIN_REDIRECT_URL = '/'
+
 
 
 # Static files (CSS, JavaScript, Images)

@@ -83,13 +83,16 @@
           <li class = "nav-item mx-2">
             <div class="dropdown">
               <button class="btn btn-btn-success text-white dropdown-toggle" type="button" id="productDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Shariful Islam
+                {{ username}}
               </button>
               <div class="dropdown-menu" aria-labelledby="productDropdown">
-                <a class="dropdown-item" href="{% url 'app:profile'  %}">Profile</a>
-                <a class="dropdown-item" href="#">Change Password</a>
-                <a class="dropdown-item" href= "#"> Log Out</a>
- 
+                <a class="dropdown-item" href="{% url 'app:profile' %}">Profile</a>
+                <a class="dropdown-item" href="{% url 'app:change_password' %}">Change Password</a>
+                <a class="dropdown-item" href="{% url 'app:password_reset' %}">Reset Password</a>
+                <form action="{% url 'app:logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="dropdown-item">Log Out</button>
+                </form>
             </div>
 
           </li>
